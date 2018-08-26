@@ -108,7 +108,7 @@ public class Core extends Script implements Paintable, MessageListener
         g.drawString("Status: ", 285, 210);
         g.drawString(Core.CurrentStatus, 380, 210);
         g.drawString("Level:  ", 285, 225);
-        g.drawString(String.valueOf(Skill.WOODCUTTING.getRealLevel()) + " (+" + (String.valueOf(Skill.WOODCUTTING.getRealLevel() - StartLevel)) + ")", 380, 225);
+        g.drawString(String.valueOf(Skill.WOODCUTTING.getLevel()) + " (+" + (String.valueOf(Skill.WOODCUTTING.getLevel() - StartLevel)) + ")", 380, 225);
         g.drawString("Time elapsed:  ", 285, 240);
         g.drawString(Timer.toString(), 380, 240);
 /*        g.drawString("Current wave:  ", 285, 255);

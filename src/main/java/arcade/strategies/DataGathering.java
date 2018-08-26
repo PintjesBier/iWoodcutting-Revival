@@ -21,7 +21,7 @@ public class DataGathering implements Strategy
         Logger.addMessage("iWoodcutting: gathering data", true);
         Core.CurrentStatus = "Gathering data";
 
-        Core.StartLevel = Skill.WOODCUTTING.getRealLevel();
+        Core.StartLevel = Skill.WOODCUTTING.getLevel();
 
         Core.DataGathered = true;
         Logger.addMessage("iWoodcutting: Data gathered", true);

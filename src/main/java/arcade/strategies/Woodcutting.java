@@ -60,9 +60,12 @@ public class Woodcutting implements Strategy {
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
-                    return Core.Tree.distanceTo() <= 4;
+                    return Core.Tree.distanceTo() <= 12;
                 }
-            }, 10000);
+            }, 5000);
+
+            Core.Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
+            Core.Tree.interact(SceneObjects.Option.CHOP_DOWN);
 
             //WAIT FOR ACTION
             Time.sleep(new SleepCondition() {

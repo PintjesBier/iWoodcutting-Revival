@@ -5,10 +5,10 @@ package arcade.data;
  */
 public class Constants {
     //TREE ID's
-    public static int TREE_ID = 1276;
-    public static int OAK_TREE_ID = 1751;
-    public static int MAPLE_TREE_ID = 1759;
-    public static int YEW_TREE_ID = 1753;
+    static int TREE_ID = 1276;
+    static int OAK_TREE_ID = 1751;
+    static int MAPLE_TREE_ID = 1759;
+    static int YEW_TREE_ID = 1753;
 
     //LOG ID's
     public static int TREE_LOG_ID = 1512;
@@ -23,12 +23,13 @@ public class Constants {
     //RANDOM ITEMS ID's
     public static int LUMBERJACK_HAT_ID = 10941;
     public static int LUMBERJACK_TOP_ID = 10939;
-    public static int LUMBERJACK_BOTTOM_ID = 10939;
-    public static int LUMBERJACK_BOOTS_ID = 5345;
-    public static int LUMBERJACK_GLOVES_ID = 5345;
+    public static int LUMBERJACK_BOTTOM_ID = 10940;
+    public static int LUMBERJACK_BOOTS_ID = 10933;
+
     public static int MBOX_ID = 6199;
+
     public static int CLUE_NEST_EASY = 19712;
-    public static int CLUE_NEST_MEDIUM = 19712;
+    public static int CLUE_NEST_MEDIUM = 19714;
     public static int CLUE_NEST_HARD = 19716;
     public static int CLUE_NEST_MASTER = 19718;
 
