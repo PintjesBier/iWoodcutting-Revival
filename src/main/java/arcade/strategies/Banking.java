@@ -72,7 +72,7 @@ public class Banking implements Strategy {
                 Time.sleep(new SleepCondition() {
                     @Override
                     public boolean isValid() {
-                        return !Inventory.contains(Constants.TREE_LOG_ID, Constants.OAK_TREE_LOG_ID, Constants.MAPLE_TREE_ID, Constants.YEW_TREE_LOG_ID);
+                        return !Inventory.contains(Constants.TREE_LOG_ID, Constants.OAK_TREE_LOG_ID, Constants.MAPLE_TREE_LOG_ID, Constants.YEW_TREE_LOG_ID);
                     }
                 },5000);
 

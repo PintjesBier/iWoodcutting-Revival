@@ -4,7 +4,6 @@ package arcade.core;
 import arcade.data.Area;
 import arcade.strategies.Banking;
 import arcade.strategies.DataGathering;
-import arcade.strategies.LoginHandler;
 import arcade.strategies.Woodcutting;
 import org.parabot.environment.api.interfaces.Paintable;
 import org.parabot.environment.scripts.Category;
@@ -14,11 +13,12 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.events.MessageEvent;
 import org.rev317.min.api.events.listeners.MessageListener;
 import org.rev317.min.api.methods.Skill;
+import org.rev317.min.api.wrappers.SceneObject;
 import org.rev317.min.api.wrappers.Tile;
 
 import java.awt.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by Tristan on 14/03/2018.
@@ -38,6 +38,7 @@ public class Core extends Script implements Paintable, MessageListener
     public static String CurrentStatus = "Starting";
     public static boolean DataGathered = false;
     public static int StartLevel;
+    public static SceneObject Tree;
 
     //TIMER
     private static org.parabot.environment.api.utils.Timer Timer = new org.parabot.environment.api.utils.Timer();
@@ -52,7 +53,6 @@ public class Core extends Script implements Paintable, MessageListener
     @Override
     public boolean onExecute()
     {
-        strategies.add(new LoginHandler());
         strategies.add(new DataGathering());
         strategies.add(new Woodcutting());
         strategies.add(new Banking());

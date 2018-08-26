@@ -20,6 +20,18 @@ public class Constants {
     public static int IRON_AXE_ID = 1350;
     public static int RUNE_AXE_ID = 1360;
 
+    //RANDOM ITEMS ID's
+    public static int LUMBERJACK_HAT_ID = 10941;
+    public static int LUMBERJACK_TOP_ID = 10939;
+    public static int LUMBERJACK_BOTTOM_ID = 10939;
+    public static int LUMBERJACK_BOOTS_ID = 5345;
+    public static int LUMBERJACK_GLOVES_ID = 5345;
+    public static int MBOX_ID = 6199;
+    public static int CLUE_NEST_EASY = 19712;
+    public static int CLUE_NEST_MEDIUM = 19712;
+    public static int CLUE_NEST_HARD = 19716;
+    public static int CLUE_NEST_MASTER = 19718;
+
     //ANIMATION ID's
     public static int AXE_SWINGING_ID = 867;
 
