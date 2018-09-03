@@ -4,6 +4,7 @@ package arcade.core;
 import arcade.data.Area;
 import arcade.strategies.Banking;
 import arcade.strategies.DataGathering;
+import arcade.strategies.Relog;
 import arcade.strategies.Woodcutting;
 import org.parabot.environment.api.interfaces.Paintable;
 import org.parabot.environment.scripts.Category;
@@ -54,6 +55,7 @@ public class Core extends Script implements Paintable, MessageListener
     public boolean onExecute()
     {
         strategies.add(new DataGathering());
+        strategies.add(new Relog());
         strategies.add(new Woodcutting());
         strategies.add(new Banking());
 
