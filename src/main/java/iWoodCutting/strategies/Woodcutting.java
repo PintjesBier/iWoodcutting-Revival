@@ -9,7 +9,6 @@ import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.Tile;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;

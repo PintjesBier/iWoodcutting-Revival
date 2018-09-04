@@ -12,15 +12,13 @@ import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.ScriptManifest;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.events.MessageEvent;
-import org.rev317.min.api.events.listeners.MessageListener;
 import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.SceneObject;
 import org.rev317.min.api.wrappers.Tile;
 
 import java.awt.*;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Created by Tristan on 14/03/2018.
@@ -33,8 +31,7 @@ import java.util.*;
         servers = { "Revival" },
         version = 1.0)
 
-public class Core extends Script implements Paintable, MessageListener
-{
+public class Core extends Script implements Paintable {
     //VARIABLES
     private final ArrayList<Strategy> strategies = new ArrayList<>();
     public static String CurrentStatus = "Starting";
@@ -47,14 +44,12 @@ public class Core extends Script implements Paintable, MessageListener
 
     //AREAS
     public static Area BankArea = new Area(new Tile(3463, 2743), new Tile(3463, 2754), new Tile(3474, 2754), new Tile(3474, 2743));
-/*    public static Area ArcadeMachineArea = new Area(new Tile(1973, 4766), new Tile(1979, 4766), new Tile(1979, 4775), new Tile(1973, 4775));*/
 
     //TILES
-    public static Tile WoodCuttingTeleportTile = new Tile(3458,2725,0);
+    public static Tile WoodCuttingTeleportTile = new Tile(3458, 2725, 0);
 
     @Override
-    public boolean onExecute()
-    {
+    public boolean onExecute() {
         strategies.add(new DataGathering());
         strategies.add(new WhitelistAntiBan());
         strategies.add(new Relog());
@@ -66,8 +61,7 @@ public class Core extends Script implements Paintable, MessageListener
     }
 
     @Override
-    public void onFinish()
-    {
+    public void onFinish() {
         super.onFinish();
     }
 
@@ -79,18 +73,12 @@ public class Core extends Script implements Paintable, MessageListener
 
     private final Font font1 = new Font("Arial", 1, 12);
 
-    private String FormatNumber(double number)
-    {
-        if (number >= 1000 && number < 1000000)
-        {
+    private String FormatNumber(double number) {
+        if (number >= 1000 && number < 1000000) {
             return new DecimalFormat("#,###.0").format(number / 1000) + "K";
-        }
-        else if (number >= 1000000 && number < 1000000000)
-        {
+        } else if (number >= 1000000 && number < 1000000000) {
             return new DecimalFormat("#,###.0").format(number / 1000000) + "M";
-        }
-        else if (number >= 1000000000)
-        {
+        } else if (number >= 1000000000) {
             return new DecimalFormat("#,###.00").format(number / 1000000000) + "B";
         }
 
@@ -98,9 +86,8 @@ public class Core extends Script implements Paintable, MessageListener
     }
 
     @Override
-    public void paint(Graphics g1)
-    {
-        Graphics2D g = (Graphics2D)g1;
+    public void paint(Graphics g1) {
+        Graphics2D g = (Graphics2D) g1;
 
         //PAINT
         g.setColor(color1);
@@ -121,11 +108,5 @@ public class Core extends Script implements Paintable, MessageListener
         g.drawString(String.valueOf(TotalWavesCompleted), 380, 270);*/
 
     }
-
-    @Override
-    public void messageReceived(MessageEvent messageEvent)
-    {
-
-    }
-    }
+}
 

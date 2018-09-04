@@ -6,7 +6,6 @@ import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Interfaces;
 import org.rev317.min.api.methods.Menu;
 

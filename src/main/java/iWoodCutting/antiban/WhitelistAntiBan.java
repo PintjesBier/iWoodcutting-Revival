@@ -1,7 +1,6 @@
 package iWoodCutting.antiban;
 
 import iWoodCutting.randoms.IRandomEvent;
-import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Players;
