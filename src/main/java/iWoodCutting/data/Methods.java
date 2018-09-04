@@ -1,5 +1,6 @@
 package iWoodCutting.data;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import iWoodCutting.core.Core;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Random;
@@ -17,19 +18,30 @@ public class Methods
     //WOODCUTING
     public static int CheckTreeToCut ()
     {
-        if (Skill.WOODCUTTING.getRealLevel() < 15)
+        if (Core.GUITree == "Progressive") {
+            if (Skill.WOODCUTTING.getRealLevel() < 15) {
+                TreeID = Constants.TREE_ID;
+            } else if (Skill.WOODCUTTING.getRealLevel() >= 15 && Skill.WOODCUTTING.getRealLevel() < 45) {
+                TreeID = Constants.OAK_TREE_ID;
+            } else if (Skill.WOODCUTTING.getRealLevel() >= 45 && Skill.WOODCUTTING.getRealLevel() < 60) {
+                TreeID = Constants.MAPLE_TREE_ID;
+            } else if (Skill.WOODCUTTING.getRealLevel() >= 60) {
+                TreeID = Constants.YEW_TREE_ID;
+            }
+        }
+        else if (Core.GUITree == "Tree")
         {
             TreeID = Constants.TREE_ID;
         }
-        else if (Skill.WOODCUTTING.getRealLevel() >= 15 && Skill.WOODCUTTING.getRealLevel() < 45)
+        else if (Core.GUITree == "Oak tree")
         {
             TreeID = Constants.OAK_TREE_ID;
         }
-        else if (Skill.WOODCUTTING.getRealLevel() >= 45 && Skill.WOODCUTTING.getRealLevel() < 60)
+        else if (Core.GUITree == "Maple tree")
         {
             TreeID = Constants.MAPLE_TREE_ID;
         }
-        else if (Skill.WOODCUTTING.getRealLevel() >= 60)
+        else if (Core.GUITree == "Yew tree")
         {
             TreeID = Constants.YEW_TREE_ID;
         }

@@ -1,6 +1,7 @@
 package iWoodCutting.core;
 
 
+import iWoodCutting.GUI.GUI;
 import iWoodCutting.antiban.WhitelistAntiBan;
 import iWoodCutting.data.Area;
 import iWoodCutting.strategies.Banking;
@@ -8,6 +9,7 @@ import iWoodCutting.strategies.DataGathering;
 import iWoodCutting.strategies.Relog;
 import iWoodCutting.strategies.Woodcutting;
 import org.parabot.environment.api.interfaces.Paintable;
+import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.ScriptManifest;
@@ -16,6 +18,7 @@ import org.rev317.min.api.methods.Skill;
 import org.rev317.min.api.wrappers.SceneObject;
 import org.rev317.min.api.wrappers.Tile;
 
+import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -37,6 +40,7 @@ public class Core extends Script implements Paintable {
     public static String CurrentStatus = "Starting";
     public static boolean DataGathered = false;
     public static int StartLevel;
+    public static String GUITree;
     public static SceneObject Tree;
 
     //TIMER
@@ -55,8 +59,14 @@ public class Core extends Script implements Paintable {
         strategies.add(new Relog());
         strategies.add(new Woodcutting());
         strategies.add(new Banking());
-
         provide(strategies);
+
+        //LOAD GUI
+        GUI gui = new GUI();
+        while(gui.isVisible()) {
+            Time.sleep(100);
+        }
+
         return true;
     }
 
