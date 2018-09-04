@@ -8,8 +8,10 @@ import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
+import org.rev317.min.api.wrappers.SceneObject;
 import org.rev317.min.api.wrappers.Tile;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,8 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
 public class Woodcutting implements Strategy {
     //VARIABLES
     private Tile TreeTile;
+    private SceneObject Tree;
+    private int TreeID;
 
     @Override
     public boolean activate() {
@@ -50,20 +54,36 @@ public class Woodcutting implements Strategy {
         {
             Core.CurrentStatus = "Chopping tree";
             Logger.addMessage("iWoodcutting: Chopping tree", true);
-            Core.Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
-            TreeTile = new Tile(Core.Tree.getLocalRegionX(),Core.Tree.getLocalRegionY(),0);
+
+            TreeID = Methods.CheckTreeToCut();
+
+            if (SceneObjects.getClosest(TreeID).distanceTo() >= 2)
+            {
+                Core.ExitTile.walkTo();
+
+                //WAIT UNTIL ARRIVED AT TREE
+                Time.sleep(new SleepCondition() {
+                    @Override
+                    public boolean isValid() {
+                        return Core.ExitTile == getMyPlayer().getLocation();
+                    }
+                }, 3000);
+            }
+
+            Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
+/*            TreeTile = new Tile(Core.Tree.getLocalRegionX(),Core.Tree.getLocalRegionY(),0);
             Walking.walkTo(TreeTile);
 
             //WAIT UNTIL ARRIVED AT TREE
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
-                    return Core.Tree.distanceTo() <= 10;
+                    return Core.Tree.distanceTo() <= 15;
                 }
             }, 5000);
 
-            Core.Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
-            Core.Tree.interact(SceneObjects.Option.CHOP_DOWN);
+            Core.Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());*/
+            Tree.interact(SceneObjects.Option.CHOP_DOWN);
 
             //WAIT FOR ACTION
             Time.sleep(new SleepCondition() {

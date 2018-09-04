@@ -4,6 +4,9 @@ package iWoodCutting.data;
  * Created by Tristan on 16/03/2018.
  */
 public class Constants {
+    //BANK ID
+    public static int BANK_ID = 25808;
+
     //TREE ID's
     static int TREE_ID = 1276;
     static int OAK_TREE_ID = 1751;
