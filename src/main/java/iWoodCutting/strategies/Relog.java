@@ -1,5 +1,7 @@
 package iWoodCutting.strategies;
 
+import iWoodCutting.core.Core;
+import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.framework.SleepCondition;
@@ -18,12 +20,16 @@ import static org.rev317.min.api.methods.Game.isLoggedIn;
 public class Relog implements Strategy {
     @Override
     public boolean activate() {
-        return !Game.isLoggedIn();
+        return !isLoggedIn();
     }
 
     @Override
     public void execute() {
         if(!isLoggedIn()) {
+            //UPDATE
+            Core.CurrentStatus = "Relogging";
+            Logger.addMessage("iWoodcutting: Relogging", true);
+
             Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
             Time.sleep(new SleepCondition() {
                 @Override
@@ -38,10 +44,10 @@ public class Relog implements Strategy {
                 public boolean isValid() {
                     return Interfaces.getOpenInterfaceId() == -1;
                 }
-            }, 2000);
+            }, 10000);
 
-            Time.sleep(3000, 4000);
-
+            Core.CurrentStatus = "Relogged, waiting...";
+            Logger.addMessage("iWoodcutting: Relogged, waiting...", true);
         }
 
     }

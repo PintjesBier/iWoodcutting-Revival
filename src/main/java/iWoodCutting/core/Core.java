@@ -1,6 +1,7 @@
 package iWoodCutting.core;
 
 
+import iWoodCutting.antiban.WhitelistAntiBan;
 import iWoodCutting.data.Area;
 import iWoodCutting.strategies.Banking;
 import iWoodCutting.strategies.DataGathering;
@@ -55,6 +56,7 @@ public class Core extends Script implements Paintable, MessageListener
     public boolean onExecute()
     {
         strategies.add(new DataGathering());
+        strategies.add(new WhitelistAntiBan());
         strategies.add(new Relog());
         strategies.add(new Woodcutting());
         strategies.add(new Banking());

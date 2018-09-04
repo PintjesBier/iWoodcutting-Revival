@@ -6,12 +6,9 @@ import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.methods.Bank;
-import org.rev317.min.api.methods.Game;
-import org.rev317.min.api.methods.Inventory;
-import org.rev317.min.api.methods.Menu;
-import static org.rev317.min.api.methods.Players.getMyPlayer;
+import org.rev317.min.api.methods.*;
 
+import static org.rev317.min.api.methods.Players.getMyPlayer;
 
 /**
  * Created by Tristan on 26/08/2018.
@@ -19,7 +16,8 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
 public class Banking implements Strategy {
     @Override
     public boolean activate() {
-        return Game.isLoggedIn() && Inventory.isFull();
+        return Inventory.isFull()
+                && SceneObjects.getClosest(25808) != null;
     }
 
     @Override
@@ -74,7 +72,7 @@ public class Banking implements Strategy {
                     public boolean isValid() {
                         return !Inventory.contains(Constants.TREE_LOG_ID, Constants.OAK_TREE_LOG_ID, Constants.MAPLE_TREE_LOG_ID, Constants.YEW_TREE_LOG_ID);
                     }
-                },5000);
+                },3000);
 
                 Bank.close();
             }

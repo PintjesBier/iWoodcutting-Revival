@@ -7,10 +7,9 @@ import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.api.methods.Game;
-import org.rev317.min.api.methods.GroundItems;
-import org.rev317.min.api.methods.Inventory;
-import org.rev317.min.api.methods.SceneObjects;
+import org.rev317.min.api.methods.*;
+import org.rev317.min.api.wrappers.Tile;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +20,14 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
  * Created by Tristan on 26/08/2018.
  */
 public class Woodcutting implements Strategy {
+    //VARIABLES
+    private Tile TreeTile;
+
     @Override
     public boolean activate() {
-        return Game.isLoggedIn() && !Inventory.isFull();
+        return !Inventory.isFull()
+                && SceneObjects.getClosest(Methods.CheckTreeToCut()) != null
+                && Interfaces.getOpenInterfaceId() == -1;
     }
 
     @Override
@@ -48,13 +52,14 @@ public class Woodcutting implements Strategy {
             Core.CurrentStatus = "Chopping tree";
             Logger.addMessage("iWoodcutting: Chopping tree", true);
             Core.Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
-            Core.Tree.interact(SceneObjects.Option.CHOP_DOWN);
+            TreeTile = new Tile(Core.Tree.getLocalRegionX(),Core.Tree.getLocalRegionY(),0);
+            Walking.walkTo(TreeTile);
 
             //WAIT UNTIL ARRIVED AT TREE
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
-                    return Core.Tree.distanceTo() <= 12;
+                    return Core.Tree.distanceTo() <= 10;
                 }
             }, 5000);
 

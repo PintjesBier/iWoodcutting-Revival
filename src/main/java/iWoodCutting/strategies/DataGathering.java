@@ -3,6 +3,7 @@ package iWoodCutting.strategies;
 import iWoodCutting.core.Core;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.scripts.framework.Strategy;
+import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.Skill;
 
 /**
@@ -12,7 +13,7 @@ public class DataGathering implements Strategy
 {
     @Override
     public boolean activate() {
-        return !Core.DataGathered;
+        return !Core.DataGathered && Game.isLoggedIn();
     }
 
     @Override
