@@ -1,23 +1,17 @@
-package arcade.strategies;
+package iWoodCutting.strategies;
 
-import arcade.core.Core;
-import arcade.data.Constants;
-import arcade.data.Methods;
-import com.sun.xml.internal.messaging.saaj.util.FinalArrayList;
+import iWoodCutting.core.Core;
+import iWoodCutting.data.Constants;
+import iWoodCutting.data.Methods;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
-import org.rev317.min.accessors.Ground;
 import org.rev317.min.api.methods.Game;
 import org.rev317.min.api.methods.GroundItems;
 import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.SceneObjects;
-import org.rev317.min.api.wrappers.GroundItem;
-import org.rev317.min.api.wrappers.SceneObject;
-import sun.reflect.generics.tree.Tree;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package arcade.data;
+package iWoodCutting.data;
 
 import org.rev317.min.api.wrappers.Tile;
 

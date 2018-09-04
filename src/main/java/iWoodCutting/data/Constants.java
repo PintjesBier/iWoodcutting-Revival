@@ -1,4 +1,4 @@
-package arcade.data;
+package iWoodCutting.data;
 
 /**
  * Created by Tristan on 16/03/2018.

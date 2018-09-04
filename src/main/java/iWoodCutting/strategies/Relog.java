@@ -1,4 +1,4 @@
-package arcade.strategies;
+package iWoodCutting.strategies;
 
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.input.Keyboard;

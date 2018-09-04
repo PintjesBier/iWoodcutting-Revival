@@ -1,6 +1,6 @@
-package arcade.strategies;
+package iWoodCutting.strategies;
 
-import arcade.core.Core;
+import iWoodCutting.core.Core;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Skill;

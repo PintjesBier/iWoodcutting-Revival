@@ -1,7 +1,7 @@
-package arcade.strategies;
+package iWoodCutting.strategies;
 
-import arcade.core.Core;
-import arcade.data.Constants;
+import iWoodCutting.core.Core;
+import iWoodCutting.data.Constants;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;

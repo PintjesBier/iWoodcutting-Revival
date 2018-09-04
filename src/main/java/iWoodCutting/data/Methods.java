@@ -1,6 +1,6 @@
-package arcade.data;
+package iWoodCutting.data;
 
-import arcade.core.Core;
+import iWoodCutting.core.Core;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Random;
 import org.parabot.environment.api.utils.Time;

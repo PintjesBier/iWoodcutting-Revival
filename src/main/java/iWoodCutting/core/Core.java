@@ -1,11 +1,11 @@
-package arcade.core;
+package iWoodCutting.core;
 
 
-import arcade.data.Area;
-import arcade.strategies.Banking;
-import arcade.strategies.DataGathering;
-import arcade.strategies.Relog;
-import arcade.strategies.Woodcutting;
+import iWoodCutting.data.Area;
+import iWoodCutting.strategies.Banking;
+import iWoodCutting.strategies.DataGathering;
+import iWoodCutting.strategies.Relog;
+import iWoodCutting.strategies.Woodcutting;
 import org.parabot.environment.api.interfaces.Paintable;
 import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.Script;
