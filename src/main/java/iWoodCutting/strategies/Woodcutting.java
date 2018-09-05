@@ -1,5 +1,6 @@
 package iWoodCutting.strategies;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import iWoodCutting.core.Core;
 import iWoodCutting.data.Constants;
 import iWoodCutting.data.Methods;
@@ -10,6 +11,7 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.SceneObject;
 import org.rev317.min.api.wrappers.Tile;
+import sun.reflect.generics.tree.Tree;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -21,11 +23,6 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
  * Created by Tristan on 26/08/2018.
  */
 public class Woodcutting implements Strategy {
-    //VARIABLES
-    private Tile TreeTile;
-    private SceneObject Tree;
-    private int TreeID;
-
     @Override
     public boolean activate() {
         return !Inventory.isFull()
@@ -50,48 +47,32 @@ public class Woodcutting implements Strategy {
         RandomDrops.add(Constants.MBOX_ID);
 
         //WOODCUTTING CLASS
-        if (getMyPlayer().getAnimation() == -1)
-        {
+        if (getMyPlayer().getAnimation() == -1) {
             Core.CurrentStatus = "Chopping tree";
             Logger.addMessage("iWoodcutting: Chopping tree", true);
 
-            TreeID = Methods.CheckTreeToCut();
+            SceneObject tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
 
-            if (SceneObjects.getClosest(TreeID).distanceTo() >= 2)
-            {
-                Core.ExitTile.walkTo();
-
-                //WAIT UNTIL ARRIVED AT TREE
+            if (Core.GUITree != "Progressive" && Bank.getBank().distanceTo() <= 3) {
+                Walking.walkTo(new Tile(tree.getLocalRegionX(), tree.getLocalRegionY()));
                 Time.sleep(new SleepCondition() {
                     @Override
                     public boolean isValid() {
-                        return Core.ExitTile == getMyPlayer().getLocation();
+                        return getMyPlayer().getLocation().distanceTo() <= 3;
                     }
-                }, 3000);
+                }, 2000);
             }
 
-            Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
-/*            TreeTile = new Tile(Core.Tree.getLocalRegionX(),Core.Tree.getLocalRegionY(),0);
-            Walking.walkTo(TreeTile);
 
-            //WAIT UNTIL ARRIVED AT TREE
-            Time.sleep(new SleepCondition() {
-                @Override
-                public boolean isValid() {
-                    return Core.Tree.distanceTo() <= 15;
-                }
-            }, 5000);
-
-            Core.Tree = SceneObjects.getClosest(Methods.CheckTreeToCut());*/
-            Tree.interact(SceneObjects.Option.CHOP_DOWN);
-
-            //WAIT FOR ACTION
+            tree.interact(SceneObjects.Option.CHOP_DOWN);
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
                     return getMyPlayer().getAnimation() == Constants.AXE_SWINGING_ID;
                 }
             }, 2000);
+            Time.sleep(500, 850);
+
         }
 
         //LOOP THROUGH RANDOM DROPS

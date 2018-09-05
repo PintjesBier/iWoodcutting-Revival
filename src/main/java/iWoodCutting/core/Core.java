@@ -50,7 +50,6 @@ public class Core extends Script implements Paintable {
 
     //TILES
     public static Tile WoodCuttingTeleportTile = new Tile(3458, 2725, 0);
-    public static Tile ExitTile = new Tile(3470, 2743,0);
 
     @Override
     public boolean onExecute() {

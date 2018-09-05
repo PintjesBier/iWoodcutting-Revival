@@ -54,7 +54,7 @@ public class Banking implements Strategy {
                     public boolean isValid() {
                         return Bank.isOpen();
                     }
-                },5000);
+                },7000);
             }
             else if (Bank.getBank().distanceTo() < 20)
             {
@@ -64,7 +64,7 @@ public class Banking implements Strategy {
                     public boolean isValid() {
                         return Bank.isOpen();
                     }
-                },5000);
+                },7000);
             }
 
             if (Bank.isOpen())
@@ -78,6 +78,12 @@ public class Banking implements Strategy {
                 },3000);
 
                 Bank.close();
+                Time.sleep(new SleepCondition() {
+                    @Override
+                    public boolean isValid() {
+                        return !Bank.isOpen();
+                    }
+                },1500);
             }
         }
 
