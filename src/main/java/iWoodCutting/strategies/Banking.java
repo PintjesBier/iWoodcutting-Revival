@@ -19,8 +19,7 @@ import static org.rev317.min.api.methods.Players.getMyPlayer;
 public class Banking implements Strategy {
     @Override
     public boolean activate() {
-        return Inventory.isFull()
-                && SceneObjects.getClosest(25808) != null;
+        return Inventory.isFull() && Bank.getBank() != null;
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Banking implements Strategy {
             Core.CurrentStatus = "Banking";
 
             //OPEN BANK
-            if (!Core.BankArea.contains(getMyPlayer().getLocation()) && (Bank.getBank().distanceTo() >= 20)) {
+            if (Bank.getBank().distanceTo() >= 20) {
                 //TELEPORT TO WC
                 Menu.sendAction(315, 0, 0, 1167);
                 Time.sleep(550);
@@ -69,11 +68,11 @@ public class Banking implements Strategy {
 
             if (Bank.isOpen())
             {
-                Bank.depositAllExcept(Constants.IRON_AXE_ID, Constants.RUNE_AXE_ID);
+                Bank.depositAllExcept(Constants.IRON_AXE_ID, Constants.RUNE_AXE_ID, Constants.INFERNAL_AXE_ID);
                 Time.sleep(new SleepCondition() {
                     @Override
                     public boolean isValid() {
-                        return !Inventory.contains(Constants.TREE_LOG_ID, Constants.OAK_TREE_LOG_ID, Constants.MAPLE_TREE_LOG_ID, Constants.YEW_TREE_LOG_ID);
+                        return !Inventory.contains(Constants.TREE_LOG_ID, Constants.OAK_TREE_LOG_ID, Constants.MAPLE_TREE_LOG_ID, Constants.YEW_TREE_LOG_ID, Constants.MAGIC_TREE_LOG_ID);
                     }
                 },3000);
 

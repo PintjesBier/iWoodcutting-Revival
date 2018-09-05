@@ -24,6 +24,7 @@
             <item value="Oak tree"/>
             <item value="Maple tree"/>
             <item value="Yew tree"/>
+            <item value="Magic tree"/>
             <item value="Progressive"/>
           </model>
         </properties>

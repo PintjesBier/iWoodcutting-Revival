@@ -12,16 +12,19 @@ public class Constants {
     static int OAK_TREE_ID = 1751;
     static int MAPLE_TREE_ID = 1759;
     static int YEW_TREE_ID = 1753;
+    static int MAGIC_TREE_ID = 1761;
 
     //LOG ID's
     public static int TREE_LOG_ID = 1512;
     public static int OAK_TREE_LOG_ID = 1522;
     public static int MAPLE_TREE_LOG_ID = 1518;
     public static int YEW_TREE_LOG_ID = 1753;
+    public static int MAGIC_TREE_LOG_ID = 1514;
 
     //AXE ID's
     public static int IRON_AXE_ID = 1350;
     public static int RUNE_AXE_ID = 1360;
+    public static int INFERNAL_AXE_ID = 13242;
 
     //RANDOM ITEMS ID's
     public static int LUMBERJACK_HAT_ID = 10941;

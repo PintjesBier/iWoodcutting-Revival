@@ -45,6 +45,10 @@ public class Methods
         {
             TreeID = Constants.YEW_TREE_ID;
         }
+        else if (Core.GUITree == "Magic tree")
+        {
+            TreeID = Constants.MAGIC_TREE_ID;
+        }
 
         return TreeID;
     }
