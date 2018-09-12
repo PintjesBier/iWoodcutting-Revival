@@ -34,7 +34,7 @@ public class Woodcutting implements Strategy {
     public void execute()
     {
         //VARIABLES
-        List<Integer> RandomDrops = new ArrayList<Integer>();
+        final List<Integer> RandomDrops = new ArrayList<Integer>();
         RandomDrops.add(Constants.CLUE_NEST_EASY);
         RandomDrops.add(Constants.CLUE_NEST_MEDIUM);
         RandomDrops.add(Constants.CLUE_NEST_HARD);
@@ -45,6 +45,7 @@ public class Woodcutting implements Strategy {
         RandomDrops.add(Constants.LUMBERJACK_HAT_ID);
         RandomDrops.add(Constants.CLUE_NEST_EASY);
         RandomDrops.add(Constants.MBOX_ID);
+        RandomDrops.add(Constants.DARK_STONE_ID);
 
         //WOODCUTTING CLASS
         if (getMyPlayer().getAnimation() == -1) {
@@ -63,7 +64,6 @@ public class Woodcutting implements Strategy {
                 }, 2000);
             }
 
-
             tree.interact(SceneObjects.Option.CHOP_DOWN);
             Time.sleep(new SleepCondition() {
                 @Override
@@ -72,13 +72,12 @@ public class Woodcutting implements Strategy {
                 }
             }, 2000);
             Time.sleep(500, 850);
-
         }
 
         //LOOP THROUGH RANDOM DROPS
         for (final int i : RandomDrops)
         {
-         if ((GroundItems.getClosest(i) != null) && GroundItems.getClosest(i).distanceTo() <= 20)
+         if ((GroundItems.getClosest(i) != null) && GroundItems.getClosest(i).distanceTo() <= 1)
          {
              try
              {
