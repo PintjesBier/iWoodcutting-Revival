@@ -54,23 +54,13 @@ public class Woodcutting implements Strategy {
 
             SceneObject tree = SceneObjects.getClosest(Methods.CheckTreeToCut());
 
-            if (Core.GUITree != "Progressive" && Bank.getBank().distanceTo() <= 3) {
-                Walking.walkTo(new Tile(tree.getLocalRegionX(), tree.getLocalRegionY()));
-                Time.sleep(new SleepCondition() {
-                    @Override
-                    public boolean isValid() {
-                        return getMyPlayer().getLocation().distanceTo() <= 3;
-                    }
-                }, 2000);
-            }
-
             tree.interact(SceneObjects.Option.CHOP_DOWN);
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
                     return getMyPlayer().getAnimation() == Constants.AXE_SWINGING_ID;
                 }
-            }, 2000);
+            }, 4000);
             Time.sleep(500, 850);
         }
 
