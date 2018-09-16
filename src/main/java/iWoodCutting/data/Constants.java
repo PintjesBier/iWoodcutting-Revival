@@ -6,6 +6,7 @@ package iWoodCutting.data;
 public class Constants {
     //BANK ID
     public static int BANK_ID = 25808;
+    public static int BANK_CHEST_GUILD_ID = 28861;
 
     //TREE ID's
     static int TREE_ID = 1276;

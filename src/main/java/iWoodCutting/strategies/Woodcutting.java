@@ -4,6 +4,7 @@ import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import iWoodCutting.core.Core;
 import iWoodCutting.data.Constants;
 import iWoodCutting.data.Methods;
+import jdk.nashorn.internal.ir.IfNode;
 import org.parabot.core.ui.Logger;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;
@@ -65,30 +66,28 @@ public class Woodcutting implements Strategy {
         }
 
         //LOOP THROUGH RANDOM DROPS
-        for (final int i : RandomDrops)
-        {
-         if ((GroundItems.getClosest(i) != null) && GroundItems.getClosest(i).distanceTo() <= 1)
-         {
-             try
-             {
-                 Core.CurrentStatus = "Taking random drop";
-                 Logger.addMessage("iWoodcutting: Taking random drop", true);
-                 GroundItems.getClosest(i).take();
+        for (final int i : RandomDrops) {
+            if ((GroundItems.getClosest(i) != null) && GroundItems.getClosest(i).distanceTo() <= 1) {
+                try {
+                    Core.CurrentStatus = "Taking random drop";
+                    Logger.addMessage("iWoodcutting: Taking random drop", true);
+                    GroundItems.getClosest(i).take();
 
-                 //WAIT FOR ACTION
-                 Time.sleep(new SleepCondition() {
-                     @Override
-                     public boolean isValid() {
-                         return Inventory.contains(i);
-                     }
-                 }, 2000);
-             }
-             catch (Exception e)
-             {
-                 e.printStackTrace();
-             }
-         }
+                    //WAIT FOR ACTION
+                    Time.sleep(new SleepCondition() {
+                        @Override
+                        public boolean isValid() {
+                            return Inventory.contains(i);
+                        }
+                    }, 2000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+        //COUNT LOGS
+
         
     }
 }
